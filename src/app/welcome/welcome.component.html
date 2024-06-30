@@ -1,0 +1,144 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 col-md-6">
+      <div
+        class="row d-grid mt-sm-2 p-4 bg-dark text-white border border-light rounded-3"
+        style="--bs-bg-opacity: 0.5; margin: 1px"
+      >
+
+        <div class="col-12 p-0 m-0">
+          <h2 style="font-style:italic;">$DAI To A $Dollar</h2>
+          <div class="py-2" style="color: #FA7">On {{ GetNetwork() }}</div>
+          <!-- <h2>BLOCK</h2>
+          <p>{{ blockNumber }}</p>
+          <h2>TIMESTAMP</h2>
+          <p>{{ timeStamp }}</p> -->
+
+          <div class="py-2" *ngIf="GetNetwork() == 'PULSECHAIN'">
+            <strong style="font-style:italic;">DaiToA$</strong> Contract:
+            <div class="ps-3" style="word-break: break-all;">0xB601A3af87fceF38b158C4864F20CA898390ac00</div>
+          </div>
+          <!-- <button (click)="GetExemptAddresses()" class="btn btn-outline-secondary m-0">
+            Log Exempt Addresses
+          </button> -->
+          <div class="p-0">
+            <button (click)="isAboutShown = !isAboutShown" class="btn btn-outline-light m-0 mt-2" style="width: 110px; float:right">
+              Lite Paper...
+            </button>
+          </div>
+          <div class="py-2" style="color:#CCC; font-style:italic;">
+            <p class="p-0 m-0">This website is hosted on IPFS.</p>
+            <p class="p-0 m-0">There is no support to contact.</p>
+            <p class="p-0 m-0">There is no support that will contact you.</p>
+            <p class="p-0 m-0">Your seed phrase is your money. Do not give it to anyone nor enter it into any website.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5 offset-lg-2 col-md-6">
+      <div
+        class="row d-grid mt-sm-2 p-4 bg-dark text-white border border-light rounded-3"
+        style="--bs-bg-opacity: 0.5; margin: 1px"
+      >
+        <div class="col-12 p-0 m-0">
+          <div *ngIf="address != ''" class="pb-2">
+            <div class="row p-0 m-0">
+              <!-- <div class="col-11 p-0 m-0"> -->
+                <h6 class="p-0 m-0">Connected Account:</h6>
+              <!-- </div>
+              <div class="col-1 p-0 m-0">
+                <button (click)="FetchAccountData()" class="btn btn-outline-warning m-0 p-0" style="border: 0; font-size: 20px; margin-left: auto; float: right">
+                  <fa-icon [icon]="faRefresh"></fa-icon>
+                </button>
+              </div> -->
+            </div>
+            <div class="row ps-3 pt-2 m-0" style="word-break: break-all;">{{ GetAddress() }}</div>
+
+          </div>
+          <button
+            *ngIf="address === ''"
+            (click)="Connect()"
+            class="btn btn-outline-warning"
+          >
+            CONNECT Metamask Wallet
+          </button>
+
+          <div class="row pt-2">
+            <h5 class="m-0">Balances:</h5>
+          </div>
+
+          <div class="row">
+            <div class="col-8 py-2">
+              <div class="row">
+                <div class="col-5 py-0 pl-2 pr-0 m-0">
+                  <div *ngIf="balance != -1" style="text-align: right">{{ GetPLSBalance() | number: '1.1-1' }}</div>
+                  <div *ngIf="balance == -1" style="text-align: right"><fa-icon [icon]="faSpinner" [spin]="true"></fa-icon></div>
+                  <div *ngIf="pDaiBalance != -1"  style="text-align: right">{{ GetDAIBalance() | number: '1.1-1' }}</div>
+                  <div *ngIf="pDaiBalance == -1"  style="text-align: right"><fa-icon [icon]="faSpinner" [spin]="true"></fa-icon></div>
+                  <div *ngIf="tokenBalance != -1"  style="text-align: right">{{ GetAvailableBalance() | number: '1.1-1' }}</div>
+                  <div *ngIf="tokenBalance == -1"  style="text-align: right"><fa-icon [icon]="faSpinner" [spin]="true"></fa-icon></div>
+                </div>
+                <div class="col-7">
+                  <div>PLS</div>
+                  <div>pDAI</div>
+                  <div>DaiToA$</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 py-2">
+              <button (click)="BuypDAI()" class="btn btn-secondary m-0 p-1" style="width: 110px; float: right">
+                Top up pDAI
+              </button>
+            </div>
+          </div>
+
+
+          <div class="row pt-3 pb-0">
+            <div *ngIf="address != '' && TimeTillDepositRequired() != '-'" class="col-7 pb-0">
+              <h6 class="pt-1 pb-0 pr-0">Minimum Purchase:</h6>
+            </div>
+            <div [ngClass]="address != '' && TimeTillDepositRequired() != '-' ? 'col-5': 'col-12'" class="pb-0">
+              <button (click)="BuyD2AD()" class="btn btn-warning m-0 p-1" style="width: 110px; float: right">
+                Buy on 9mm
+              </button>
+            </div>
+          </div>
+          <div class="row pt-0 pb-3">
+            <div *ngIf="address != '' && TimeTillDepositRequired() != '-'" class="col-12 m-0 p-0 ps-3">
+              <strong *ngIf="isBurnStateDetermined && GetMinimumRequiredDeposit() != ''"><span [ngStyle]="{ 'color': (inBurn ? '#F80' : '#FFC')}">{{ GetMinimumRequiredDeposit() }}</span></strong>
+              <span *ngIf="!isBurnStateDetermined || GetMinimumRequiredDeposit() == ''"><fa-icon [icon]="faSpinner" [spin]="true"></fa-icon></span>
+            </div>
+          </div>
+
+          <div *ngIf="address != ''" class="pt-1">
+            <span *ngIf="TimeTillDepositRequired() != '' && TimeTillDepositRequired() != '-'">Time till next Burn: {{ TimeTillDepositRequired() }} hours</span>
+            <span *ngIf="TimeTillDepositRequired() == ''"><fa-icon [icon]="faSpinner" [spin]="true"></fa-icon></span>
+          </div>
+
+          <div *ngIf="SendAddressWarning()" class="pt-1 btn btn-danger" style="pointer-events: none; cursor: default;">
+            WARNING! This address has a pending burn, which WILL be applied to the next deposit (only) to this address.
+            <!-- SendAddressWarning() should also provide % to be burnt details? -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div
+  (mousedown)="isAboutShown = !isAboutShown"
+  style="height: 100%; width: 100%; opacity: 0.5;"
+  class="row collapse navbar bg-dark navbar-dark fixed-bottom p-0 m-0"
+  [ngClass]="{ collapse: !isAboutShown }"
+  id="about-footer"
+  >
+</div>
+<div
+  style="height: 70vh; width: 70vw; left: 15%; top: 15%; opacity: 0.95; color: white"
+  class="collapse navbar bg-dark navbar-dark fixed-bottom p-0 m-0 border border-light rounded-3"
+  [ngClass]="{ collapse: !isAboutShown }"
+  id="about-footer-body"
+>
+  <app-about></app-about>
+</div>

@@ -1,0 +1,12 @@
+@media (max-width: 575px) {
+  .border {
+    border: 0px solid !important;
+    border-radius: 0;
+  }
+}
+div {
+  padding: 10px;
+}
+hr {
+  margin-top: 5px;
+}

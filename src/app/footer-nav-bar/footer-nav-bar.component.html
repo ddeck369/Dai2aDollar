@@ -1,0 +1,53 @@
+<div
+  (mouseover)="isFooterShown = true"
+  style="height: 8px; opacity: 0.5;"
+  class="navbar navbar-expand bg-dark navbar-transparent fixed-bottom p-0 m-0"
+  [ngClass]="{ collapse: isFooterShown }"
+  id="button-footer"
+>
+  <div class="mx-auto d-block">
+    <button
+      (click)="isFooterShown = !isFooterShown"
+      class="btn btn-transparent"
+      style="padding: 5px 5px 42px 5px; border-radius: 30px"
+      id="footer-toggle-button"
+    >
+      <img
+        src="../../assets/chevronBlackHalfCircle.png"
+        width="60px"
+        class="mb-0"
+        style="opacity: 1"
+      />
+    </button>
+  </div>
+</div>
+
+<div
+  (mouseleave)="isFooterShown = false"
+  (click)="isAboutShown = !isAboutShown"
+  style="height: 55px; text-align: center; opacity: 0.85;"
+  class="collapse navbar bg-dark navbar-dark fixed-bottom py-0 m-0"
+  [ngClass]="{ collapse: !isFooterShown }"
+  id="icon-footer"
+  >
+  <span class="ms-auto" style="color: white">Follow D-Deck @ddeck369:&nbsp;</span>
+
+  <a class="m-0" href="https://t.me/ddeck369" target="_blank">
+    <img
+      class="m-0"
+      src="../../assets/telegram-thumb.png"
+      width="50px"
+      style="padding: 4px"
+      alt="Telegram"
+    />
+  </a>
+  <a class="me-auto" href="https://x.com/ddeck369" target="_blank">
+    <img
+      class="m-0"
+      src="../../assets/X-thumb.png"
+      width="50px"
+      style="padding: 4px"
+      alt="X"
+    />
+  </a>
+</div>

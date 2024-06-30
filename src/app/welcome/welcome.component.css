@@ -1,0 +1,10 @@
+@media (max-width: 575px) {
+  .border {
+    border: 0px solid !important;
+    border-radius: 0;
+  }
+}
+
+.fa-spin {
+  animation: fa-spin 1s infinite linear !important;
+}
