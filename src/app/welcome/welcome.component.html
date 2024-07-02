@@ -8,7 +8,15 @@
 
         <div class="col-12 p-0 m-0">
           <h2 style="font-style:italic;">$DAI To A $Dollar</h2>
-          <div class="py-2" style="color: #FA7">On {{ GetNetwork() }}</div>
+          <div class="p-0" style="margin-left: 2px">
+            <button (click)="isAboutShown = !isAboutShown" class="btn btn-outline-light m-0 mt-1" style="width: 110px; float:right">
+              Lite Paper...
+            </button>
+          </div>
+          <div class="pt-2 pb-0" style="color: #FA7" *ngIf="GetNetwork() != ''">On {{ GetNetwork() }}</div>
+          <div class="pt-0 pb-2" style="color: #FA7" *ngIf="GetNetwork() != 'PULSECHAIN'">(DaiToA$ not available)</div>
+
+          
           <!-- <h2>BLOCK</h2>
           <p>{{ blockNumber }}</p>
           <h2>TIMESTAMP</h2>
@@ -21,13 +29,10 @@
           <!-- <button (click)="GetExemptAddresses()" class="btn btn-outline-secondary m-0">
             Log Exempt Addresses
           </button> -->
-          <div class="p-0">
-            <button (click)="isAboutShown = !isAboutShown" class="btn btn-outline-light m-0 mt-2" style="width: 110px; float:right">
-              Lite Paper...
-            </button>
+          <div class="pt-2 pb-0" style="color:#AAA; font-style:italic;">
+            <p class="p-0 m-0">This website is hosted on <a class="m-0" href="https://github.com/ddeck369/Dai2aDollar" target="_blank" style="color:#BBB; font-style:italic;">Github</a> Pages.</p>
           </div>
-          <div class="py-2" style="color:#CCC; font-style:italic;">
-            <p class="p-0 m-0">This website is hosted on IPFS.</p>
+          <div class="py-2" style="color:#AAA; font-style:italic;">
             <p class="p-0 m-0">There is no support to contact.</p>
             <p class="p-0 m-0">There is no support that will contact you.</p>
             <p class="p-0 m-0">Your seed phrase is your money. Do not give it to anyone nor enter it into any website.</p>

@@ -452,7 +452,7 @@ export class WelcomeComponent implements OnInit, OnDestroy {
   }
 
   GetNetwork(): string {
-    return (Number(this.networkID) == 369) ? 'PULSECHAIN' : ((Number(this.networkID) == 1) ? 'ETHEREUM' : this.networkName.toUpperCase()) + ' (DaiToA$ not available)';
+    return (Number(this.networkID) == 369) ? 'PULSECHAIN' : ((Number(this.networkID) == 1) ? 'ETHEREUM' : this.networkName.toUpperCase());
   }
 
   GetAddress(): string {
