@@ -87,7 +87,10 @@ export class WelcomeComponent implements OnInit, OnDestroy {
 
       this._ngZone.run(() => {
         if (this.checkIntervalId) clearInterval(this.checkIntervalId); // Reset interval - i.e. Check every 22 seconds only if no blocks are received.
-        this.checkIntervalId = setInterval(async () => { console.log('Extra check'); this.CheckForChanges() }, 22000);
+        this.checkIntervalId = setInterval(async () => { 
+          // console.log('Extra check'); 
+          this.CheckForChanges() 
+        }, 22000);
         this.CheckForChanges();
       });
     });

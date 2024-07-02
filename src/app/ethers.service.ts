@@ -64,6 +64,8 @@ export class EthersService implements OnInit, OnDestroy {
     // );
 
     console.log('constructing');
+    
+    this.debug = false;
 
     if ((window as any).ethereum) {
 
