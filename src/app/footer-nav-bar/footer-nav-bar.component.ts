@@ -7,7 +7,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class FooterNavBarComponent implements OnInit {
   isFooterShown: boolean = false;
-  isAboutShown: boolean = false;
 
   @HostListener('document:click', ['$event']) toggleOpen(event: Event) {
     if (
@@ -19,7 +18,6 @@ export class FooterNavBarComponent implements OnInit {
       (<HTMLButtonElement>event.target).id !== 'about-footer'
     ) {
       this.isFooterShown = false;
-      this.isAboutShown = false;
     }
   }
 

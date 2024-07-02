@@ -1,5 +1,6 @@
 <div
   (mouseover)="isFooterShown = true"
+  (mousedown)="isFooterShown = !isFooterShown"
   style="height: 8px; opacity: 0.5;"
   class="navbar navbar-expand bg-dark navbar-transparent fixed-bottom p-0 m-0"
   [ngClass]="{ collapse: isFooterShown }"
@@ -24,7 +25,6 @@
 
 <div
   (mouseleave)="isFooterShown = false"
-  (click)="isAboutShown = !isAboutShown"
   style="height: 55px; text-align: center; opacity: 0.85;"
   class="collapse navbar bg-dark navbar-dark fixed-bottom py-0 m-0"
   [ngClass]="{ collapse: !isFooterShown }"
