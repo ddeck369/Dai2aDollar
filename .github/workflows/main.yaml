@@ -10,7 +10,7 @@ jobs:
 
 steps:    
   - name: Checkout Repository
-    uses: actions/checkout@v2
+    uses: actions/checkout@v3
 
   - name: Adding Node.js
     uses: actions/setup-node@v2
@@ -29,3 +29,4 @@ steps:
     env:
       CI: true
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
