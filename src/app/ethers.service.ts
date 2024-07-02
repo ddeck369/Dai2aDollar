@@ -46,7 +46,7 @@ export class EthersService implements OnInit, OnDestroy {
   public networkName: string = '';
   public address: string = '';
 
-  public debug: boolean = true;
+  public debug: boolean = false;
 
   private listenerProvider!: BrowserProvider;
   private blockListener!: any;
